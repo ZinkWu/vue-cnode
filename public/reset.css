@@ -1,0 +1,6 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+*::after,*::before{box-sizing: border-box;}
+body{-webkit-tap-highlight-color: rgba(0,0,0,0);white-space: nowrap;}
+ol,ul{list-style: none;}
+h1,h2,h3,h4,h5,h6{font-weight: none;}
+a{text-decoration:none;}
