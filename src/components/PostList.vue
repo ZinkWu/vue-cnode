@@ -16,7 +16,15 @@
                 </li>
                 <li v-for="post in posts">
                     <!--头像-->
-                    <img :src="post.author.avatar_url" alt="">
+                    <router-link :to="{
+                    name: 'user_info',
+                    params:{
+                        name: post.author.loginname
+                    }
+                    }">
+                        <img :src="post.author.avatar_url" alt="">
+                    </router-link>
+
                     <!--回复/浏览-->
                     <span class="text">
                         <span class="reply_count">{{post.reply_count}}/</span>
@@ -29,7 +37,14 @@
                     {tab: post.top !== true && post.good !== true}
                     ]">{{post | tabFormatter}}</span>
                     <!--标题-->
-                    <span class="title">{{post.title}}</span>
+                    <router-link class="title":to="{
+                    name: 'post_count',
+                    params:{
+                        id: post.id
+                    }
+                    }">
+                        {{post.title}}
+                    </router-link>
                     <!--时间-->
                     <span class="last-time">{{post.last_reply_at | forTimeData}}</span>
                 </li>
@@ -133,18 +148,15 @@
             background: #fff;
             &:hover{
                 background: #F5F5F5;
-                &>.title{
+                & .title{
                     text-decoration: underline;
-                    cursor:pointer;
-                }
-                &>img{
                     cursor:pointer;
                 }
             }
             &>*{
                 margin: 0 6px;
             }
-            &>img{
+            &>a>img{
                 width: 30px;
                 height: 30px;
             }
@@ -179,7 +191,8 @@
                 white-space: nowrap;
             }
             &>.title{
-                white-space: nowrap;
+                max-width: 70%;
+                color: #000;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }

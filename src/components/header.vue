@@ -26,21 +26,25 @@
         align-items: center;
         > .logo > img{
             width: 120px;
-            margin-left: 221px;
+            margin-left: 12vw;
         }
         > ul{
             height: 50px;
             display:flex;
             align-items: center;
-            margin-right: 236px;
-            > li > a{
-                padding: 11px 10px;
-                font-size: 13px;
-                color: #ccc;
-                &:hover{
-                    color: #fff;
+            margin-right: 12vw;
+            > li {
+
+                > a{
+                    padding: 11px 10px;
+                    font-size: 13px;
+                    color: #ccc;
+                    &:hover{
+                        color: #fff;
+                    }
                 }
             }
+
         }
     }
 </style>

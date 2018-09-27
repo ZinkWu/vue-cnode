@@ -6,10 +6,6 @@ import Axios from 'axios'
 Vue.prototype.$axios = Axios
 Vue.config.productionTip = false
 
-new Vue({
-    router,
-    render: h => h(App)
-}).$mount('#app')
 Vue.filter('forTimeData', (string) => {
     if (!string) {
         return ''
@@ -47,3 +43,7 @@ Vue.filter('tabFormatter',function (post) {
         return '招聘'
     }
 })
+new Vue({
+    router,
+    render: h => h(App)
+}).$mount('#app')

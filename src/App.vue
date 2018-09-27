@@ -2,7 +2,7 @@
     <div id="app">
         <top-header></top-header>
         <div class="main">
-            <post-list></post-list>
+            <router-view name="main"></router-view>
         </div>
 
     </div>
@@ -22,9 +22,7 @@
 </script>
 
 <style lang="scss">
-#app{
-    background: #E1E1E1;
-}    
+
 .main{
     width: 80%;
     margin: 0 auto;
