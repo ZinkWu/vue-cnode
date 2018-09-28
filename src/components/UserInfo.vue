@@ -2,7 +2,7 @@
     <div class="userinfo">
         <div class="loading" v-if="isLoading"></div>
         <div v-else class="userinfo-main">
-            <div class="user">
+            <div class="user-wrapper">
                 <router-link :to="{
                 name: 'root'
                 }">
@@ -91,6 +91,11 @@
         },
         beforeMount() {
             this.getData()
+        },
+        watch:{
+            '$route'(to,from){
+                this.getData()
+            }
         }
     }
 </script>
@@ -98,7 +103,7 @@
 <style scoped lang="scss">
     .userinfo {
         > .userinfo-main {
-            > .user {
+            > .user-wrapper {
                  .to-root{
                     background: #F6F6F6;
                      padding: 10px;

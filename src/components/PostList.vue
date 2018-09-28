@@ -40,7 +40,8 @@
                     <router-link class="title":to="{
                     name: 'post_count',
                     params:{
-                        id: post.id
+                        id: post.id,
+                        name: post.author.loginname
                     }
                     }">
                         {{post.title}}
@@ -48,32 +49,45 @@
                     <!--时间-->
                     <span class="last-time">{{post.last_reply_at | forTimeData}}</span>
                 </li>
+                <li class="button">
+                    <Pagination @handleList="renderList"></Pagination>
+                </li>
             </ul>
         </div>
     </div>
 </template>
 
 <script>
+    import Pagination from './Pagination'
     export default {
         name: "PostList",
         data(){
             return {
                 isLoading: true,
-                posts: []
+                posts: [],
+                postPage: 1
             }
+        },
+        components:{
+            Pagination
         },
         methods:{
             getData(){
                 this.$axios.get('https://cnodejs.org/api/v1/topics',{
-                    page:1,
-                    limit:20
+                    params:{
+                        page: this.postPage,
+                        limit:20
+                    }
                 }).then((response)=>{
                     this.posts = response.data.data
-                    console.log(this.posts)
                     this.isLoading = false
                 },(err)=>{
                     console.log(err)
                 })
+            },
+            renderList(value){
+                this.postPage = value
+                this.getData()
             }
         },
         beforeMount(){
@@ -146,7 +160,7 @@
             border-bottom: 1px solid #F5F5F5;
             position: relative;
             background: #fff;
-            &:hover{
+            &:not(.button):hover{
                 background: #F5F5F5;
                 & .title{
                     text-decoration: underline;

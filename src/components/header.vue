@@ -1,8 +1,19 @@
 <template>
     <div class="header">
-        <a href="#" class="logo"><img src="../assets/cnodejs_light.svg" alt=""></a>
+        <router-link :to="{
+        name: 'root'
+        }" class="logo">
+            <img src="../assets/cnodejs_light.svg" alt="">
+        </router-link>
         <ul>
-            <li><a href="#">首页</a></li>
+
+            <li>
+                <router-link :to="{
+                name: 'root'
+                }" class="logo">
+                首页
+                </router-link>
+            </li>
             <li><a href="#">新手入门</a></li>
             <li><a href="#">API</a></li>
             <li><a href="#">关于</a></li>

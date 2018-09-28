@@ -54,7 +54,6 @@
                 this.$axios(`https://cnodejs.org/api/v1/topic/${this.$route.params.id}`)
                     .then((response) => {
                         this.post = response.data.data
-                        console.log(this.post);
                         this.isLoading = false
                     }, (err) => {
                         console.log(err)
@@ -63,6 +62,12 @@
         },
         beforeMount() {
             this.getData()
+        },
+        //检测路由变化
+        watch:{
+            '$route'(to,from){
+                this.getData()
+            }
         }
     }
 </script>
@@ -108,6 +113,7 @@
 
     .post_content {
         border-radius: 6px;
+        margin-right: 305px;
         > .header {
             border-bottom: 2px solid #E5E5E5;
             padding: 10px 20px 15px 20px;
