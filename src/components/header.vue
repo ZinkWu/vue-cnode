@@ -18,7 +18,12 @@
             <li><a href="#">API</a></li>
             <li><a href="#">关于</a></li>
             <li><a href="#">注册</a></li>
-            <li><a href="#">登录</a></li>
+            <li><router-link :to="{
+                name: 'login'
+            }">
+                登录
+            </router-link></li>
+
         </ul>
     </div>
 </template>
